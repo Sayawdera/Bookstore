@@ -65,4 +65,31 @@ class User extends BaseModel
     public array $translatable = [];
 
     protected $casts = [];
+
+    public function CountryId()
+    {
+        return $this->belongsTo(Country::class, 'id');
+    }
+
+    public function roleId()
+    {
+        return $this->belongsToMany(Role::class, 'role_user');
+    }
+
+    public function productId()
+    {
+        return $this->hasMany(Product::class, 'id');
+    }
+
+    public function PaymentId()
+    {
+        return $this->hasMany(Payment::class, 'id');
+    }
+
+    /*public function customerId()
+    {
+        return $this->hasOne(Customer::class, 'id');
+    }*/
+
+
 }

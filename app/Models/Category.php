@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use OpenApi\Annotations as OA;
 
 /**
  * @OA\Schema(
@@ -65,4 +66,20 @@ class Category extends BaseModel
     public array $translatable = ['name'];
 
     protected $casts = [];
+
+
+    public function parentId()
+    {
+        return $this->belongsTo(Category::class, 'parent_id');
+    }
+
+    public function subCategories()
+    {
+        return $this->hasMany(Category::class, 'parent_id');
+    }
+
+    public function productId()
+    {
+        return $this->hasMany(Product::class, 'category_id');
+    }
 }

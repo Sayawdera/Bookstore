@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use OpenApi\Annotations as OA;
 
 /**
  * @OA\Schema(
@@ -65,4 +66,10 @@ class Author extends BaseModel
     public array $translatable = ['description'];
 
     protected $casts = [];
+
+    public function ProductId()
+    {
+        return $this->hasMany(Product::class, 'author_id');
+    }
+
 }

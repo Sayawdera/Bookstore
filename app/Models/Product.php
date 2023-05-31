@@ -66,4 +66,28 @@ class Product extends BaseModel
     public array $translatable = ['title', 'description', 'photo'];
 
     protected $casts = [];
+
+    public function userId()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public function categoryId()
+    {
+        return $this->belongsTo(Category::class);
+    }
+
+    public function brandId()
+    {
+        return $this->belongsTo(Brand::class);
+    }
+    public function authorId()
+    {
+        return $this->belongsTo(Author::class);
+    }
+
+    public function productRelaise()
+    {
+        return $this->hasMany(ProductRelaise::class, 'product_id');
+    }
 }

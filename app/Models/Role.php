@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use OpenApi\Annotations as OA;
 
 /**
  * @OA\Schema(
@@ -65,4 +66,9 @@ class Role extends BaseModel
     public array $translatable = [];
 
     protected $casts = [];
+
+    public function userId()
+    {
+        return $this->belongsToMany(User::class, 'role_user');
+    }
 }

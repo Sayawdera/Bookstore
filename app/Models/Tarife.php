@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use OpenApi\Annotations as OA;
 
 /**
  * @OA\Schema(
@@ -65,4 +66,9 @@ class Tarife extends BaseModel
     public array $translatable = ['title'];
 
     protected $casts = [];
+
+    public function paymentsId()
+    {
+        return $this->hasMany(Payment::class, 'tarif_id');
+    }
 }

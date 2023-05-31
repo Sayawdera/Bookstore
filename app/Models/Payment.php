@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use OpenApi\Annotations as OA;
 
 /**
  * @OA\Schema(
@@ -65,4 +66,14 @@ class Payment extends BaseModel
     public array $translatable = ['amount'];
 
     protected $casts = [];
+
+    public function userId()
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
+
+    public function tarivesId()
+    {
+        return $this->belongsTo(Tarife::class,'tarif_id');
+    }
 }

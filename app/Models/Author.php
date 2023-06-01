@@ -3,7 +3,6 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use OpenApi\Annotations as OA;
 
 /**
  * @OA\Schema(
@@ -67,9 +66,9 @@ class Author extends BaseModel
 
     protected $casts = [];
 
-    public function ProductId()
+    public function products()
     {
-        return $this->hasMany(Product::class, 'author_id');
+        return $this->hasMany(Product::class);
     }
 
 }

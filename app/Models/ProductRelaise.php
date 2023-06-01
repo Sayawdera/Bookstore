@@ -3,7 +3,6 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use OpenApi\Annotations as OA;
 
 /**
  * @OA\Schema(
@@ -69,6 +68,6 @@ class ProductRelaise extends BaseModel
 
     public function products()
     {
-        return $this->belongsTO(Product::class, 'product_id');
+        return $this->belongsTO(Product::class);
     }
 }

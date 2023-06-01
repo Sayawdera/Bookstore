@@ -3,7 +3,6 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use OpenApi\Annotations as OA;
 
 /**
  * @OA\Schema(
@@ -67,8 +66,8 @@ class Tarife extends BaseModel
 
     protected $casts = [];
 
-    public function paymentsId()
+    public function payments()
     {
-        return $this->hasMany(Payment::class, 'tarif_id');
+        return $this->hasMany(Payment::class);
     }
 }

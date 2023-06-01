@@ -3,7 +3,6 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use OpenApi\Annotations as OA;
 
 /**
  * @OA\Schema(
@@ -67,9 +66,9 @@ class Country extends BaseModel
 
     protected $casts = [];
 
-    public function userId()
+    public function users()
     {
-        return $this->hasMany(User::class, 'country_id');
+        return $this->hasMany(User::class);
     }
 
 }

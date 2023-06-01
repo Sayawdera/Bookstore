@@ -66,8 +66,8 @@ class ProductRelaise extends BaseModel
 
     protected $casts = [];
 
-    public function products()
+    public function product()
     {
-        return $this->belongsTO(Product::class);
+        return $this->belongsTo(Product::class);
     }
 }

@@ -22,8 +22,8 @@ class ProductService extends BaseService
      */
     public function paginatedList($data = [],$all=false): LengthAwarePaginator|Collection
     {
-        if($all) return $this->repository->getAllList($data, ["productRelaises"]);
-        return $this->repository->paginatedList($data, ["productRelaises"]);
+        if($all) return $this->repository->getAllList($data, ["products"]);
+        return $this->repository->paginatedList($data, ["products"]);
     }
 
 }

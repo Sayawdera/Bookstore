@@ -21,8 +21,8 @@ class CountryService extends BaseService
      */
     public function paginatedList($data = [],$all=false): LengthAwarePaginator|Collection
     {
-        if($all) return $this->repository->getAllList($data, ["users"]);
-        return $this->repository->paginatedList($data, ["users"]);
+        if($all) return $this->repository->getAllList($data, ["products"]);
+        return $this->repository->paginatedList($data, ["products"]);
     }
 
 }

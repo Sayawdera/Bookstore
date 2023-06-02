@@ -85,11 +85,4 @@ class User extends BaseModel
     {
         return $this->hasMany(Payment::class);
     }
-
-    /*public function customerId()
-    {
-        return $this->hasOne(Customer::class, 'id');
-    }*/
-
-
 }

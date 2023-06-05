@@ -89,4 +89,23 @@ class Product extends BaseModel
     {
         return $this->hasMany(ProductRelaise::class);
     }
+
+    /**
+     * @param array $withCount
+     */
+    public function scopeFilter($query, $data): void
+    {
+        if (isset($data['category_id']))
+           $query->where('category_id', $data["category_id"]);
+
+        if (isset($data['brand_id']))
+           $query->where('brand_id', $data["brand_id"]);
+
+        if (isset($data['author_id']))
+            $query->where('author_id', $data["author_id"]);
+
+        if (isset($data['created_data']))
+            $query->where('created_data', $data["created_data"]);
+
+    }
 }

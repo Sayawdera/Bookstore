@@ -6,13 +6,13 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 /**
  * @OA\Schema(
- *   description="Product model",
- *   title="Product",
+ *   description="Genre model",
+ *   title="Genre",
  *   required={},
- *   @OA\Property(type="integer",description="id of Product",title="id",property="id",example="1",readOnly="true"),
- *   @OA\Property(type="string",description="name of Product",title="name",property="name",example="Macbook Pro"),
- *   @OA\Property(type="string",description="sku of Product",title="sku",property="sku",example="MCBPRO2022"),
- *   @OA\Property(type="integer",description="price of Product",title="price",property="price",example="99"),
+ *   @OA\Property(type="integer",description="id of Genre",title="id",property="id",example="1",readOnly="true"),
+ *   @OA\Property(type="string",description="name of Genre",title="name",property="name",example="Macbook Pro"),
+ *   @OA\Property(type="string",description="sku of Genre",title="sku",property="sku",example="MCBPRO2022"),
+ *   @OA\Property(type="integer",description="price of Genre",title="price",property="price",example="99"),
  *   @OA\Property(type="dateTime",title="created_at",property="created_at",example="2022-07-04T02:41:42.336Z",readOnly="true"),
  *   @OA\Property(type="dateTime",title="updated_at",property="updated_at",example="2022-07-04T02:41:42.336Z",readOnly="true"),
  * )
@@ -22,10 +22,10 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
  *
  *
  * @OA\Schema (
- *   schema="Products",
- *   title="Products list",
+ *   schema="Genres",
+ *   title="Genres list",
  *   @OA\Property(title="data",property="data",type="array",
- *     @OA\Items(type="object",ref="#/components/schemas/Product"),
+ *     @OA\Items(type="object",ref="#/components/schemas/Genre"),
  *   ),
  *   @OA\Property(type="string", title="first_page_url",property="first_page_url",example="http://localhost:8080/api/merchant-customers?page=1"),
  *   @OA\Property(type="string", title="last_page_url",property="last_page_url",example="http://localhost:8080/api/merchant-customers?page=3"),
@@ -47,73 +47,27 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
  * )
  *
  * @OA\Parameter(
- *      parameter="Product--id",
+ *      parameter="Genre--id",
  *      in="path",
- *      name="Product_id",
+ *      name="Genre_id",
  *      required=true,
- *      description="Id of Product",
+ *      description="Id of Genre",
  *      @OA\Schema(
  *          type="integer",
  *          example="1",
  *      )
  * ),
  */
-class Product extends BaseModel
+class Genre extends BaseModel
 {
     use HasFactory;
 
-    public array $translatable = ['title', 'description', 'photo'];
+    public array $translatable = ['title'];
 
     protected $casts = [];
 
-    public function user()
+    public function products()
     {
-        return $this->belongsTo(User::class);
-    }
-
-    public function category()
-    {
-        return $this->belongsTo(Category::class);
-    }
-
-    public function brand()
-    {
-        return $this->belongsTo(Brand::class);
-    }
-    public function author()
-    {
-        return $this->belongsTo(Author::class);
-    }
-
-    public function productRelaises()
-    {
-        return $this->hasMany(ProductRelaise::class);
-    }
-
-    public function genres()
-    {
-        return $this->belongsToMany(Genre::class);
-    }
-
-    /**
-     * @param array $withCount
-     */
-    public function scopeFilter($query, $data): void
-    {
-        if (isset($data['category_id']))
-           $query->where('category_id', $data["category_id"]);
-
-        if (isset($data['brand_id']))
-           $query->where('brand_id', $data["brand_id"]);
-
-        if (isset($data['author_id']))
-            $query->where('author_id', $data["author_id"]);
-
-        if (isset($data['created_data']))
-            $query->where('created_data', $data["created_data"]);
-
-        if (isset($data['genre']))
-            $query->where('genre', $data["genre"]);
-
+        return $this->belongsToMany(Product::class);
     }
 }

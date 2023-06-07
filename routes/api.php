@@ -6,6 +6,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CountryController;
 use App\Http\Controllers\FaqController;
 use App\Http\Controllers\FounderController;
+use App\Http\Controllers\GenreController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProductRelaiseController;
@@ -29,6 +30,7 @@ Route::apiResource('/tarifes', TarifeController::class);
 Route::apiResource('/authors', AuthorController::class);
 Route::apiResource('/faqs', FaqController::class);
 Route::apiResource('/founders', FounderController::class);
+Route::apiResource('/genres', GenreController::class);
 
 
 Route::get('token-status', function ()

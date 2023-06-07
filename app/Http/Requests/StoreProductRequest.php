@@ -34,6 +34,8 @@ class StoreProductRequest extends FormRequest
             'data.brand_id' => 'required|numeric',
             'data.user_id' => 'required|numeric',
             'data.author_id' => 'required|numeric',
+            'data.genre_id' => 'required|numeric',
+
 
         ];
     }

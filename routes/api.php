@@ -11,6 +11,7 @@ use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProductRelaiseController;
 use App\Http\Controllers\RoleController;
+use App\Http\Controllers\statusController;
 use App\Http\Controllers\TarifeController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
@@ -31,6 +32,7 @@ Route::apiResource('/authors', AuthorController::class);
 Route::apiResource('/faqs', FaqController::class);
 Route::apiResource('/founders', FounderController::class);
 Route::apiResource('/genres', GenreController::class);
+Route::apiResource('/status', StatusController::class);
 
 
 Route::get('token-status', function ()

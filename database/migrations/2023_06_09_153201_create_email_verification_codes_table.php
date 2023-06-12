@@ -13,10 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('role_user', function (Blueprint $table) {
+        Schema::create('email_verification_codes', function (Blueprint $table) {
             $table->id();
-            $table->foreignId("user_id")->constrained('users')->cascadeOnUpdate()->cascadeOnDelete();
-            $table->foreignId("role_id")->constrained('roles')->cascadeOnUpdate()->cascadeOnDelete();
+            $table->string('code');
+            $table->string('email');
             $table->timestamps();
         });
     }
@@ -28,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('role_user');
+        Schema::dropIfExists('email_verification_codes');
     }
 };

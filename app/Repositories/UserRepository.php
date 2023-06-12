@@ -5,6 +5,7 @@ namespace App\Repositories;
 use App\Constants\GeneralStatus;
 use App\Models\BaseModel;
 use App\Models\User;
+use App\Models\UserRoles;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
 
@@ -24,7 +25,7 @@ class UserRepository extends BaseRepository
         {
             foreach ($data['roles'] as $role)
             {
-                UserRolea::create([
+                UserRoles::create([
                     'user_id' => $model->id,
                     'role_code' => $role['role_code'],
                     'status' => $role['status'] ? GeneralStatus::STATUS_ACTIVE : GeneralStatus::STATUS_NOT_ACTIVE
@@ -62,7 +63,7 @@ class UserRepository extends BaseRepository
     public function findByEmailOrName($emailOrName)
     {
         $model = $this->getBaseModel();
-        return $model::query()->where('email', '=', $emailOrName)->orWhere('name', '=', $emailOrName)->first();
+        return $model::query()->where('email', '=', $emailOrName)->orWhere('firstname', '=', $emailOrName)->first();
     }
 
     public function createToken(string $email): string

@@ -5,6 +5,7 @@ namespace App\Models;
 use App\Constants\GeneralStatus;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Laravel\Sanctum\HasApiTokens;
 
 /**
  * @OA\Schema(
@@ -62,7 +63,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  */
 class User extends BaseModel
 {
-    use HasFactory;
+    use HasApiTokens, HasFactory;
 
     public array $translatable = [];
     protected $fillable = [

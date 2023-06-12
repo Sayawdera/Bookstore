@@ -13,7 +13,7 @@ use Symfony\Component\HttpFoundation\Response;
 class rbac
 {
     /**
-     * Handle an incoming request.
+     * Handle an incoming request. test
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \Closure(\Illuminate\Http\Request): (\Illuminate\Http\Response|\Illuminate\Http\RedirectResponse)  $next

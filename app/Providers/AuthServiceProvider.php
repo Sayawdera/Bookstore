@@ -28,5 +28,21 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
+        Gate::define('super_admin', function (User $user) {
+            return $user->getActiveRole()->role_code == UserRole::SUPERADMIN;
+        });
+
+        Gate::define('editor', function (User $user) {
+            return $user->getActiveRole()->role_code == UserRole::EDITOR;
+        });
+
+        Gate::define('moderator', function (User $user) {
+            return $user->getActiveRole()->role_code == UserRole::MODERATOR;
+        });
+
+        Gate::define('user', function (User $user) {
+            return $user->getActiveRole()->role_code == UserRole::USER;
+        });
+
     }
 }

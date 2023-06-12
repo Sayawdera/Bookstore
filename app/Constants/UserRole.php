@@ -8,6 +8,8 @@ class UserRole
     const MODERATOR = 'moderator';
     const EDITOR = 'editor';
     const USER = 'user';
+    const SUPERUSER = 'superuser';
+    const NEWUSER = 'newuser';
 
     /**
      * @return string[]
@@ -18,7 +20,9 @@ class UserRole
             self::SUPERADMIN => 'super_admin',
             self::MODERATOR => 'moderator',
             self::EDITOR => 'editor',
-            self::USER => 'user'
+            self::USER => 'user',
+            self::SUPERUSER => 'superuser',
+            self::NEWUSER => 'newuser',
         ];
     }
 
@@ -33,6 +37,8 @@ class UserRole
                 self::MODERATOR => 'moderator',
                 self::EDITOR => 'editor',
                 self::USER => 'user',
+                self::SUPERUSER => 'superuser',
+                self::NEWUSER => 'newuser',
                 default => '',
             };
     }

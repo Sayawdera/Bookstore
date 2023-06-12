@@ -65,4 +65,10 @@ class Country extends BaseModel
     public array $translatable = ['name'];
 
     protected $casts = [];
+
+    public function users()
+    {
+        return $this->hasMany(User::class);
+    }
+
 }

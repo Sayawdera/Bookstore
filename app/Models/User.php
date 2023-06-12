@@ -2,7 +2,10 @@
 
 namespace App\Models;
 
+use App\Constants\GeneralStatus;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Laravel\Sanctum\HasApiTokens;
 
 /**
  * @OA\Schema(
@@ -60,9 +63,84 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
  */
 class User extends BaseModel
 {
-    use HasFactory;
+    use HasApiTokens, HasFactory;
 
     public array $translatable = [];
+    protected $fillable = [
 
-    protected $casts = [];
+        'firstname',
+        'lastname',
+        'adress',
+        'email',
+        'phonenumber',
+        'password',
+        'photo',
+        'country_id',
+        'email_verified_at',
+
+    ];
+
+    protected $casts = [
+        'email_verified_at' => 'datetime'
+    ];
+
+    protected $hidden = [
+        'password',
+        'remeber_token'
+    ];
+
+    protected $with = [
+        'roles'
+    ];
+
+    public function getActiveRole()
+    {
+        return $this->roles()->where('status', GeneralStatus::STATUS_ACTIVE)->first();
+    }
+
+    public function scopeFilter($query, $data)
+    {
+        if (isset($data['status']))
+        {
+            $query->whereHas('roles', function ($q) use ($data) {
+                $q->where('status', $data['status']);
+            });
+        }
+
+        if (isset($data['role']))
+        {
+            $query->whereHas('roles', function ($q) use ($data) {
+                $q->where('role_code', $data['role']);
+            });
+        }
+
+        return $query;
+    }
+
+    public function countries()
+    {
+        return $this->belongsTo(Country::class);
+    }
+
+    public function roles()
+    {
+        return $this->belongsToMany(Role::class);
+    }
+
+    public function products()
+    {
+        return $this->hasMany(Product::class);
+    }
+
+    public function payments()
+    {
+        return $this->hasMany(Payment::class);
+    }
+
+    public function Userroles(): HasMany
+    {
+        return $this->hasMany(UserRoles::class);
+    }
+
+
 }

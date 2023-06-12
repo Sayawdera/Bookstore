@@ -22,7 +22,7 @@ class BaseService implements IBaseService
      */
     public function paginatedList($data = [],$all=false): LengthAwarePaginator|Collection
     {
-        if($all) return $this->repository->getAllList($data);
+        if($all) return $this->repository->getAllList($data, []);
         return $this->repository->paginatedList($data);
     }
  

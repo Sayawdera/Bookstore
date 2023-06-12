@@ -65,4 +65,9 @@ class ProductRelaise extends BaseModel
     public array $translatable = ['title','description','pdf'];
 
     protected $casts = [];
+
+    public function product()
+    {
+        return $this->belongsTo(Product::class);
+    }
 }

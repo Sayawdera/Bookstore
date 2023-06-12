@@ -65,4 +65,9 @@ class Role extends BaseModel
     public array $translatable = [];
 
     protected $casts = [];
+
+    public function users()
+    {
+        return $this->belongsToMany(User::class, 'role_user');
+    }
 }

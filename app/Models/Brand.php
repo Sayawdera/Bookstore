@@ -65,4 +65,9 @@ class Brand extends BaseModel
     public array $translatable = [];
 
     protected $casts = [];
+
+    public function products()
+    {
+        return $this->hasMany(Product::class);
+    }
 }

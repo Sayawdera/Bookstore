@@ -1,6 +1,9 @@
 <?php
 namespace App\Http\Controllers;
 
+use App\Constants\UserRole;
+use App\Dtos\ApiResponse;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Throwable;
 use App\Models\User;
 use App\Services\UserService;
@@ -201,5 +204,12 @@ class UserController extends Controller
     public function destroy(int $crudgeneratorId): array |Builder|Collection|User
     {
         return $this->service->deleteModel($crudgeneratorId);
+    }
+
+
+    public function roles(): JsonResponse
+    {
+        $role = new UserRole();
+        return ApiResponse::success($role->getRoleList());
     }
 }

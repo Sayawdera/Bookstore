@@ -12,4 +12,6 @@ class FaqService extends BaseService
         $this->repository = $repository;
     }
 
+
+
 }

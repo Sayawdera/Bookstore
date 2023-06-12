@@ -65,4 +65,10 @@ class Author extends BaseModel
     public array $translatable = ['description'];
 
     protected $casts = [];
+
+    public function products()
+    {
+        return $this->hasMany(Product::class);
+    }
+
 }

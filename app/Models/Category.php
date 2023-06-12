@@ -65,4 +65,20 @@ class Category extends BaseModel
     public array $translatable = ['name'];
 
     protected $casts = [];
+
+
+    public function parents()
+    {
+        return $this->belongsTo(self::class, 'parent_id', 'id');
+    }
+
+    public function subCategories()
+    {
+        return $this->hasMany(Category::class, 'id', 'parent_id');
+    }
+
+    public function products()
+    {
+        return $this->hasMany(Product::class);
+    }
 }

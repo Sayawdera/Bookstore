@@ -30,6 +30,12 @@ class UpdateProductRequest extends FormRequest
             'data.pdf' => 'required',
             'data.selling_method' => 'required|boolean',
             'data.price' => 'required|numeric',
+            'data.category_id' => 'required|numeric',
+            'data.brand_id' => 'required|numeric',
+            'data.user_id' => 'required|numeric',
+            'data.author_id' => 'required|numeric',
+            'data.genre_id' => 'required|numeric',
+
         ];
     }
 }

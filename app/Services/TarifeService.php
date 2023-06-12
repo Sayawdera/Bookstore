@@ -12,4 +12,6 @@ class TarifeService extends BaseService
         $this->repository = $repository;
     }
 
+
+
 }

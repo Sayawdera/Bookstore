@@ -65,4 +65,14 @@ class Payment extends BaseModel
     public array $translatable = ['amount'];
 
     protected $casts = [];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'user_id', 'id');
+    }
+
+    public function tarives()
+    {
+        return $this->belongsTo(Tarife::class,'tarif_id', 'id');
+    }
 }

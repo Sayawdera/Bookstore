@@ -65,4 +65,9 @@ class Tarife extends BaseModel
     public array $translatable = ['title'];
 
     protected $casts = [];
+
+    public function payments()
+    {
+        return $this->hasMany(Payment::class);
+    }
 }

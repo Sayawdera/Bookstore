@@ -40,7 +40,7 @@ class GenreController extends Controller
      * @return LengthAwarePaginator
      * @throws Throwable
      */
-    public function index(Request $request): LengthAwarePaginator
+    public function index(StoreGenreRequest $request): LengthAwarePaginator
     {
         return $this->service->paginatedList([], $request->has('all'));
     }

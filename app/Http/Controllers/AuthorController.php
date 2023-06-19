@@ -86,7 +86,6 @@ class AuthorController extends Controller
     public function store(StoreAuthorRequest $request): array |Builder|Collection|Author
     {
         return $this->service->createModel($request->validated('data'));
-
     }
 
     /**

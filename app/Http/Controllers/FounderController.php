@@ -40,7 +40,7 @@ class FounderController extends Controller
      * @return LengthAwarePaginator
      * @throws Throwable
      */
-    public function index(Request $request): LengthAwarePaginator
+    public function index(StoreFounderRequest $request): LengthAwarePaginator
     {
         return $this->service->paginatedList([], $request->has('all'));
     }

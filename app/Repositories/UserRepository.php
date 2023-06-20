@@ -5,7 +5,7 @@ namespace App\Repositories;
 use App\Constants\GeneralStatus;
 use App\Models\BaseModel;
 use App\Models\User;
-use App\Models\UserRoles;
+use App\Models\UserRole;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
 
@@ -25,7 +25,7 @@ class UserRepository extends BaseRepository
         {
             foreach ($data['roles'] as $role)
             {
-                UserRoles::create([
+                UserRole::create([
                     'user_id' => $model->id,
                     'role_code' => $role['role_code'],
                     'status' => $role['status'] ? GeneralStatus::STATUS_ACTIVE : GeneralStatus::STATUS_NOT_ACTIVE
@@ -44,7 +44,7 @@ class UserRepository extends BaseRepository
             {
                 foreach ($data['roles'] as $role)
                 {
-                    UserROles::create([
+                    UserRole::create([
                         'user_id' => $model->id,
                         'role_code' => $role['role_code'],
                         'status' => $role['status'] ? GeneralStatus::STATUS_ACTIVE : GeneralStatus::STATUS_NOT_ACTIVE,

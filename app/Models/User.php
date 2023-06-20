@@ -86,7 +86,7 @@ class User extends BaseModel
 
     protected $hidden = [
         'password',
-        'remeber_token'
+        'remember_token'
     ];
 
     protected $with = [
@@ -124,7 +124,7 @@ class User extends BaseModel
 
     public function roles()
     {
-        return $this->belongsToMany(Role::class);
+        return $this->hasMany(UserRole::class);
     }
 
     public function products()
@@ -137,10 +137,8 @@ class User extends BaseModel
         return $this->hasMany(Payment::class);
     }
 
-    public function Userroles(): HasMany
-    {
-        return $this->hasMany(UserRoles::class);
-    }
+
+
 
 
 }

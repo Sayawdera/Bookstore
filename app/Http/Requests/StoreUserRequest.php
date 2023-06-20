@@ -32,6 +32,8 @@ class StoreUserRequest extends FormRequest
             'data.password' => 'required|string',
             'data.photo' => 'required',
             'data.country_id' => 'nullable|numeric',
+            'data.roles.*.role_code' => ['required', 'string'],
+            'data.roles.*.status' => ['required', 'boolean']
         ];
     }
 }

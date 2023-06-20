@@ -32,17 +32,5 @@ class AuthServiceProvider extends ServiceProvider
             return $user->getActiveRole()->role_code == UserRole::SUPERADMIN;
         });
 
-        Gate::define('editor', function (User $user) {
-            return $user->getActiveRole()->role_code == UserRole::EDITOR;
-        });
-
-        Gate::define('moderator', function (User $user) {
-            return $user->getActiveRole()->role_code == UserRole::MODERATOR;
-        });
-
-        Gate::define('user', function (User $user) {
-            return $user->getActiveRole()->role_code == UserRole::USER;
-        });
-
     }
 }

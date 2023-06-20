@@ -40,7 +40,7 @@ class ProductRelaiseController extends Controller
      * @return LengthAwarePaginator
      * @throws Throwable
      */
-    public function index(StoreProductRelaiseRequest $request): LengthAwarePaginator
+    public function index(Request $request): LengthAwarePaginator
     {
         return $this->service->paginatedList([], $request->has('all'));
     }

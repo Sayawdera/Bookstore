@@ -13,7 +13,6 @@ use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProductRelaiseController;
 use App\Http\Controllers\RoleController;
-use App\Http\Controllers\statusController;
 use App\Http\Controllers\TarifeController;
 use App\Http\Controllers\UserController;
 use App\Http\Requests\StoreEmailVerificationCodeRequest;
@@ -38,24 +37,29 @@ Route::get('/email/verify/{id}/{hash}', function (StoreEmailVerificationCodeRequ
 
 
 
-Route::middleware(['auth:sanctum'])->prefix('/admin')->group( function (){
 
-    Route::apiResource('/user', UserController::class);
+
+
+Route::middleware(['auth:sanctum','rbac'])->prefix('/admin')->group( function (){
     Route::apiResource('/categories', CategoryController::class);
     Route::apiResource('/products', ProductController::class);
     Route::apiResource('/brands', BrandController::class);
-    Route::apiResource('/role', RoleController::class);
     Route::apiResource('/payment', PaymentController::class);
-    Route::apiResource('/countries', CountryController::class);
     Route::apiResource('/product-relaises', ProductRelaiseController::class);
     Route::apiResource('/tarifes', TarifeController::class);
     Route::apiResource('/authors', AuthorController::class);
     Route::apiResource('/faqs', FaqController::class);
     Route::apiResource('/founders', FounderController::class);
     Route::apiResource('/genres', GenreController::class);
-    Route::apiResource('/status', StatusController::class);
-
+    Route::apiResource('/user', UserController::class);
+    Route::apiResource('/countries', CountryController::class);
+    Route::apiResource('/role', RoleController::class);
 });
+
+
+
+
+
 
 
 

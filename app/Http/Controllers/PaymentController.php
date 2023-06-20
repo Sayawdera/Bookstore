@@ -40,7 +40,7 @@ class PaymentController extends Controller
      * @return LengthAwarePaginator
      * @throws Throwable
      */
-    public function index(StorePaymentRequest $request): LengthAwarePaginator
+    public function index(Request $request): LengthAwarePaginator
     {
         return $this->service->paginatedList([], $request->has('all'));
     }

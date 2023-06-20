@@ -40,7 +40,7 @@ class statusController extends Controller
      * @return LengthAwarePaginator
      * @throws Throwable
      */
-    public function index(StorestatusRequest $request): LengthAwarePaginator
+    public function index(Request $request): LengthAwarePaginator
     {
         return $this->service->paginatedList([], $request->has('all'));
     }

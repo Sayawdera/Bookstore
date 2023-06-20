@@ -41,7 +41,7 @@ class ProductController extends Controller
      * @return LengthAwarePaginator
      * @throws Throwable
      */
-    public function index(StoreProductRequest $request): LengthAwarePaginator|Collection
+    public function index(Request $request): LengthAwarePaginator|Collection
     {
         return $this->service->paginatedList($request->all(), $request->has('all'));
     }

@@ -4,8 +4,6 @@
 ##  Rest API for BookStore in Laravel V: 11
 
 
-<p>Внимание: проект еще не обновлен до конца он не будет работать при запуске</p>
-
 
 ## Git Clone
 
